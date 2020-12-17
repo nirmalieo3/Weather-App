@@ -48,10 +48,10 @@ function creaCardMeteoPromise(nomeCitta, stateCode) {
             <div>
                 <img src="${iconURL}">
                 <h2>${infoMeteo.name}</h2>
-                <p> Temperatura: ${infoMeteo.main.temp}</p>
-                <p> Temperatura Max: ${infoMeteo.main.temp_max}</p>
-                <p> Temperatura Min: ${infoMeteo.main.temp_min}</p>
-                <p> Condizioni: ${infoMeteo.weather[0].description}</p>
+                <p> Temperature: ${infoMeteo.main.temp}</p>
+                <p> Temperature Max: ${infoMeteo.main.temp_max}</p>
+                <p> Temperature Min: ${infoMeteo.main.temp_min}</p>
+                <p> Condition: ${infoMeteo.weather[0].description}</p>
             </div>
             `
 
