@@ -29,7 +29,7 @@ function caricaMeteoPromise(nomeCitta, stateCode) {
                 }
             }
         }
-        xhr.open('GET',`http://api.openweathermap.org/data/2.5/weather?q=${nomeCitta},${stateCode}&appid=${appid}&units=metric&lang=en`)
+        xhr.open('GET',`https://api.openweathermap.org/data/2.5/weather?q=${nomeCitta},${stateCode}&appid=${appid}&units=metric&lang=en/`)
         // effettuiamo la richiesta con send
         xhr.send();
     })
