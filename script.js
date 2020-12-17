@@ -17,7 +17,7 @@ window.addEventListener('load', function() {
 
 
 
-function caricaMeteoPromise(nomeCitta, stateCode) {
+function caricaMeteoPromise(cityName, stateCode) {
     return new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
@@ -29,29 +29,28 @@ function caricaMeteoPromise(nomeCitta, stateCode) {
                 }
             }
         }
-        xhr.open('GET',`https://api.openweathermap.org/data/2.5/weather?q=${nomeCitta},${stateCode}&appid=${appid}&units=metric&lang=en/`)
+        xhr.open('GET',`https://api.openweathermap.org/data/2.5/weather?q=${cityName},${stateCode}&appid=${appid}&units=metric&lang=en/`)
         // effettuiamo la richiesta con send
         xhr.send();
     })
 }
 
 
-function creaCardMeteoPromise(nomeCitta, stateCode) {
-    caricaMeteoPromise(nomeCitta, stateCode).then(
-        (infoMeteo) => {
-            console.log(infoMeteo)
+function creaCardMeteoPromise(cityName, stateCode) {
+    caricaMeteoPromise(cityName, stateCode).then(
+        (info) => {
+           
+            let icon =  `http://openweathermap.org/img/w/${info.weather[0].icon}.png`
 
-            let iconURL =  `http://openweathermap.org/img/w/${infoMeteo.weather[0].icon}.png`
-
-            console.log(infoMeteo);
+            console.log(info);
             let card = `
             <div>
-                <img src="${iconURL}">
-                <h2>${infoMeteo.name}</h2>
-                <p> Temperature: ${infoMeteo.main.temp}</p>
-                <p> Temperature Max: ${infoMeteo.main.temp_max}</p>
-                <p> Temperature Min: ${infoMeteo.main.temp_min}</p>
-                <p> Condition: ${infoMeteo.weather[0].description}</p>
+                <img src="${icon}">
+                <h2>${info.name}</h2>
+                <p> Temperature: ${info.main.temp}</p>
+                <p> Temperature Max: ${info.main.temp_max}</p>
+                <p> Temperature Min: ${info.main.temp_min}</p>
+                <p> Condition: ${info.weather[0].description}</p>
             </div>
             `
 
